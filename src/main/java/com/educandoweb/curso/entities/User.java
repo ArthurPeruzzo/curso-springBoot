@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_user") //renomear para nao dar conflito com palavras reservadas
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -28,6 +30,7 @@ public class User implements Serializable{
 	
 	private String email;
 	
+	@JsonIgnore //ignorar para nao acontecer um looping infinito
 	@OneToMany(mappedBy = "client") //a associacao esta mapeada com o nome client na classe order
 	private List<Order> orders = new ArrayList<>();
 	
