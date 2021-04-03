@@ -15,7 +15,7 @@ import com.educandoweb.curso.repositories.UserRepository;
 public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository userRepository; //dependencia para usar os metodos da classe JpaRepository
 
 	@Override
 	public void run(String... args) throws Exception {
