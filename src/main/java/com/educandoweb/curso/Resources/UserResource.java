@@ -28,7 +28,7 @@ public class UserResource {
 	}
 	
 	@GetMapping(value = "/{id}")// o {id} faz com que possa colocar um id na url;
-	public ResponseEntity<User> findById(@PathVariable Long id){
+	public ResponseEntity<User> findById(@PathVariable Long id){ // PathVariable aceita o valor que foi passado na url
 		
 		User obj = userService.findById(id);
 		return ResponseEntity.ok().body(obj);
