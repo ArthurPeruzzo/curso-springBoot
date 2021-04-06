@@ -17,12 +17,12 @@ import com.educandoweb.curso.services.CategoryService;
 public class CategoryResource {
 	
 	@Autowired //injecao de dependencia
-	private CategoryService userService; //dependencia para usar os metodos da classe CategoryService
+	private CategoryService service; //dependencia para usar os metodos da classe CategoryService
 	
 	@GetMapping
 	public ResponseEntity<List<Category>> findAll(){
 		
-		List<Category> list = userService.findAll(); 
+		List<Category> list = service.findAll(); 
 		
 		return ResponseEntity.ok().body(list);
 	}
@@ -30,7 +30,7 @@ public class CategoryResource {
 	@GetMapping(value = "/{id}")// o {id} faz com que possa colocar um id na url;
 	public ResponseEntity<Category> findById(@PathVariable Long id){ // PathVariable aceita o valor que foi passado na url
 		
-		Category obj = userService.findById(id);
+		Category obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }

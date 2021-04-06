@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.curso.entities.User;
-import com.educandoweb.curso.services.UserService;
+import com.educandoweb.curso.entities.Product;
+import com.educandoweb.curso.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
 	
 	@Autowired //injecao de dependencia
-	private UserService service; //dependencia para usar os metodos da classe UserService
+	private ProductService service; //dependencia para usar os metodos da classe ProductService
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
+	public ResponseEntity<List<Product>> findAll(){
 		
-		List<User> list = service.findAll(); 
+		List<Product> list = service.findAll(); 
 		
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")// o {id} faz com que possa colocar um id na url;
-	public ResponseEntity<User> findById(@PathVariable Long id){ // PathVariable aceita o valor que foi passado na url
+	public ResponseEntity<Product> findById(@PathVariable Long id){ // PathVariable aceita o valor que foi passado na url
 		
-		User obj = service.findById(id);
+		Product obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }
